@@ -1,0 +1,80 @@
+<link href="bower_components/neon-animation/neon-animated-pages.html" rel="import">
+<link href="bower_components/neon-animation/neon-shared-element-animatable-behavior.html" rel="import">
+<link href="bower_components/neon-animation/animations/hero-animation.html" rel="import">
+
+<dom-module id="project-details">
+  <template>
+    <section id="details">
+
+      <div class="card" layout horizontal hero-id="{{selectedAlbum.artist}}-{{selectedAlbum.album}}" hero on-tap="{{transition}}">
+        <div class="card-left" style="background:{{selectedAlbum.color}};" hero-id="{{selectedAlbum.artist}}-{{selectedAlbum.album}}-art" hero></div>
+        <div class="card-right" flex>
+          <div layout horizontal center>
+            <div>
+              <div class="card-icon" style="background:{{selectedAlbum.color}};"></div>
+            </div>
+            <div flex>
+              <div class="card-album-title">{{selectedAlbum.album}}</div>
+              <div class="card-album-artist">{{selectedAlbum.artist}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </template>
+</dom-module>
+
+<script>
+(function() {
+  Polymer({
+      is: 'project-details',
+      
+    behaviors: [
+      Polymer.NeonSharedElementAnimatableBehavior
+    ],
+
+    properties: {
+
+      sharedElements: {
+        value: function() {
+          return {
+            'hero': this.$.header
+          }
+        }
+      },
+
+      animationConfig: {
+        value: function() {
+          var squares = Polymer.dom(this.root).querySelectorAll('.square');
+          var squaresArray = Array.prototype.slice.call(squares);
+          return {
+            'entry': [{
+              name: 'hero-animation',
+              id: 'hero',
+              toPage: this
+            }, {
+              name: 'cascaded-animation',
+              animation: 'transform-animation',
+              transformFrom: 'translateY(100%)',
+              nodes: squaresArray
+            }],
+
+            'exit': [{
+              name: 'slide-up-animation',
+              node: this.$.header
+            }, {
+              name: 'cascaded-animation',
+              animation: 'transform-animation',
+              transformTo: 'translateY(60vh)',
+              nodes: squaresArray
+            }]
+          };
+        }
+      }
+    }
+      
+      
+  });
+})();
+</script>

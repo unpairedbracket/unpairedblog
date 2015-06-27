@@ -1,0 +1,100 @@
+<link href="bower_components/neon-animation/neon-animated-pages.html" rel="import">
+<link href="project-list.html" rel="import">
+<link href="project-details.html" rel="import">
+
+<dom-module id="music-demo">
+  <template>
+
+    <style>
+      .chip-container {
+        position: absolute;
+        top: 275px;
+        right: 0;
+        left: 0;
+        text-align: center;
+      }
+
+      .chip {
+        display: inline-block;
+        position: relative;
+        border-radius: 3px;
+        margin: 4px;
+        overflow: hidden;
+        text-align: start;
+        background-color: #fff;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+      }
+
+      .chip-top {
+        width: 200px;
+        height: 200px;
+      }
+
+      .chip-bottom {
+        padding: 8px;
+        line-height: 1.5;
+      }
+
+      .chip-album-title {
+        font-weight: bold;
+      }
+
+      #details {
+        padding: 200px 10% 0;
+      }
+
+      .card {
+        height: 400px;
+        border-radius: 3px;
+        text-align: start;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .card-left {
+        width: 400px;
+      }
+
+      .card-right {
+        padding: 24px;
+      }
+
+      .card-icon {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        margin-right: 16px;
+      }
+
+      .card-album-title {
+        font-size: 2em;
+      }
+    </style>
+
+    <template is="dom-bind">
+    <neon-animated-pages id="pages" selected="0">
+
+      <project-list on-project-click="_onProjectClick"></project-list>
+      <project-details on-project-close="_onProjectClose"></project-details>
+
+    </neon-animated-pages>
+    </template>
+  </template>
+</dom-module>
+
+<script>
+
+(function() {
+  Polymer({
+
+    is: 'music-demo',
+    
+    page: 0,
+
+    selectedAlbum: null,
+  });
+  
+
+})();
+</script>

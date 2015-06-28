@@ -1,0 +1,148 @@
+<link rel="import" href="../bower_components/neon-animation/animations/hero-animation.html">
+<link rel="import" href="../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+<dom-module id="project-details">
+  <template>
+  
+    <style>
+      
+      #details {
+        padding: 200px 10% 0;
+      }
+      
+      .card {
+        height: 400px;
+        border-radius: 3px;
+        text-align: start;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .card-left {
+        width: 400px;
+        height:400px;
+      }
+
+      .card-right {
+        padding: 24px;
+      }
+
+      .card-icon {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        margin-right: 16px;
+      }
+
+      .card-project-name {
+        font-size: 2em;
+      }
+      
+      .card-project-image {
+        flex: none;
+        display: block;
+        height: 60%;
+        width: 60%;
+        padding: 20%;
+      }
+    </style>
+
+
+    <section id="details">
+
+      <div id="detailsCard" class="card layout horizontal">
+        <div id="detailsArt" class="card-left" style$="{{selectedProject.color}}">
+          <img class="card-project-image" src$="{{selectedProject.image}}"></img>
+        </div>
+        <div id="detailsRight" class="card-right flex">
+          <div id="detailsTextAndIcon" class="layout horizontal center">
+            <div>
+              <div class="card-icon" style$="{{selectedProject.color}}"><img class="card-project-image" src$="{{selectedProject.image}}"></img></div>
+            </div>
+            <div id="detailsText" class="flex">
+              <div id="detailsTitle" class="card-project-name">{{selectedProject.name}}</div>
+              <div id="detailsDescription" class="card-project-description"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </template>
+</dom-module>
+
+<script>
+(function() {
+  Polymer({
+      is: 'project-details',
+      
+    behaviors: [
+      Polymer.NeonSharedElementAnimatableBehavior
+    ],
+
+    listeners: {
+      'selected-project-changed': 'repopulateDescription'
+    },
+    
+    repopulateDescription: function(event) {
+      var $desc = $( "#detailsDescription" );
+      var newProject = event.detail.value;
+      var htmlString = newProject.longDesc;
+      var html = $.parseHTML( htmlString );
+      var nodeNames = [];
+      
+      while ($desc[0].firstChild) {
+          $desc[0].removeChild($desc[0].firstChild);
+      }
+       
+      // Append the parsed HTML
+      $desc.append( html );
+    },
+
+    
+    properties: {
+      selectedProject: {
+        type: Object,
+        reflectToAttribute: true,
+        notify: true,
+      },
+      
+      sharedElements: {
+        value: function() {
+          return {
+            'project-body': this.$.detailsCard,
+            'project-art': this.$.detailsArt,
+          }
+        }
+      },
+
+      animationConfig: {
+        value: function() {
+          return {
+            'entry': [{
+              name: 'hero-animation',
+              id: 'project-body',
+              toPage: this
+            },{
+              name: 'hero-animation',
+              id: 'project-art',
+              toPage: this
+            }],
+            'exit': [{
+              name: 'hero-animation',
+              id: 'project-body',
+              fromPage: this
+            },{
+              name: 'hero-animation',
+              id: 'project-art',
+              fromPage: this
+            }]
+          }
+        }
+      },
+    } 
+  });
+})();
+</script>

@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="project-list.html">
+<link rel="import" href="project-details.html">
+
+<dom-module id="project-section">
+  <template>
+    <neon-animated-pages id="pages" selected="{{pageNumber}}">
+
+      <project-list id="list" selected-project="{{selectedProject}}" on-project-click="transition"></project-list>
+      <project-details selected-project="{{selectedProject}}" on-tap="transition"></project-details>
+
+    </neon-animated-pages>
+  </template>
+
+  <script>
+
+  (function() {
+    Polymer({
+    
+      is: 'project-section',
+      
+      properties: {
+        pageNumber: {
+          type: String,
+          value: "0",
+        },
+      },
+
+      transition: function(e) {
+        if (this.pageNumber === "0") {
+          this.pageNumber = "1";
+        } else {
+          this.pageNumber = "0";
+        }
+      },
+      
+      ready: function() {
+        this.$.list.addProject('mekanism', 'Mekanism', 'Popular Minecraft Mod', "<p>Mekanism is a large, technological mod for Minecraft. I've been actively developing Mekanism since June 2013, along with lead developer <a href='https://www.github.com/aidancbrady'>Aidan Brady</a>.</p>", '55616b')
+        this.$.list.addProject('lmh', 'LMH App', 'Utility App for College', "<p>For the past months, I've been helping Tom Johnston and Jake Stockwin with Tom's project, an app that helps to streamline interaction with our college's intranet, making common functions far more useful.</p><p>The app is still unofficial, as any official app would need to have an iOS-compatible version, and none of us have the wherewithall to develop apps within Apple's expensive developer program</p>", '3f51b3')
+        this.$.list.addProject('oximun', 'OxIMUN Website', 'Website for the UN Society', "<p>I have helped my friend with ideas and implementation of the updated <a href='http://oximun.org'>OxIMUN 2015 website</a>.", '1a237e')
+        this.$.list.addProject('shuffle', 'Shuffle', 'Upcoming Android App', "<p>Shuffle (currently in planning stages) is a music player for Android, that allows the user fine-grained control over the behaviour of its shuffling algorithms.</p>", 'f57f17')
+        this.$.list.addProject('xbmcremote', 'XBMC Remote', 'Remote Control Program', "<p>XBMC Remote is a python-based app for the Ubuntu desktop. I wrote it in response to the lack of desktop-based programs to control XBMC (now Kodi) playback on a different computer, remotely.</p>", '0277bd')
+      }
+    });
+  })();
+  </script>
+
+</dom-module>

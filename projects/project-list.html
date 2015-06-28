@@ -1,4 +1,7 @@
+<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
 <link rel="import" href="../bower_components/neon-animation/animations/hero-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/scale-down-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
 
 <dom-module id="project-list">
@@ -109,6 +112,9 @@
               name: 'hero-animation',
               id: 'project-art',
               toPage: this
+            },{
+              name: 'cascaded-animation',
+              animation: 'scale-up-animation',
             }],
             'exit': [{
               name: 'hero-animation',
@@ -118,6 +124,9 @@
               name: 'hero-animation',
               id: 'project-art',
               fromPage: this
+            },{
+              name: 'cascaded-animation',
+              animation: 'scale-down-animation',
             }]
           }
         }
@@ -144,6 +153,16 @@
 
         this.selectedProject = event.model.item;
         
+        var nodesToScale = [];
+        var chips = Polymer.dom(this.root).querySelectorAll('.chip');
+        for (var node, index = 0; node = chips[index]; index++) {
+          if (node !== target) {
+            nodesToScale.push(node);
+          }
+        }
+        this.animationConfig['entry'][2].nodes = nodesToScale;
+        this.animationConfig['exit'][2].nodes = nodesToScale;
+
         this.fire('project-click');
       }      
     },

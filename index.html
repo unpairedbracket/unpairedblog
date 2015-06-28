@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <html>
 <head>
-  <title>paper-scroll-header-panel: demo4</title>
+  <title>Ben Spiers</title>
 
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -40,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       /* background for toolbar when it is at its full size */
       --paper-scroll-header-panel-full-header: {
-        background-image: url(images/bg6.jpg);
+        background-color: var(--paper-blue-grey-500, #607d8b);
       };
 
       /* background for toolbar when it is condensed */
@@ -71,6 +71,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .content {
       padding: 8px;
     }
+    
+    paper-toolbar .title {
+      line-height: 60px !important;
+    }
 
   </style>
 
@@ -90,8 +94,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </paper-toolbar>
 
     <div class="content">
-      <section>
-      </section>
+      <!--<section>
+        <div>
+          <img src="img/profile.png" alt="Ben Spiers">
+          <div >
+            <span >Ben Spiers</span>
+            <hr>
+            <span>Physicist - Modder - Programmer</span>
+          </div>
+        </div>
+      </section>-->
+      
       <section>
         <project-section></project-section>
       </section>

@@ -11,6 +11,10 @@
       height: 100%;
     }
     
+    #detailsText {
+      height: 100%;
+    }
+    
     .card {
       @apply(--layout-horizontal);
       height: 400px;
@@ -19,6 +23,36 @@
       overflow: hidden;
       background: #fff;
       box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .card-left {
+      width: 400px;
+      height:400px;
+    }
+
+    .card-right {
+      padding: 24px;
+      overflow-y: hidden;
+    }
+
+    .card-icon {
+    }
+
+    .card-project-name {
+      font-size: 2em;
+    }
+    
+    .card-project-description {
+      overflow-y: scroll;
+    }
+    
+    .card-project-image {
+      flex: none;
+      box-sizing: border-box
+      display: block;
+      height: auto;
+      width: 100%;
+      padding: 20%;
     }
     
     @media(max-width: 768px) {
@@ -35,31 +69,6 @@
         margin: 16px;      
       }
     }
-
-    .card-left {
-      width: 400px;
-      height:400px;
-    }
-
-    .card-right {
-      padding: 24px;
-    }
-
-    .card-icon {
-    }
-
-    .card-project-name {
-      font-size: 2em;
-    }
-    
-    .card-project-image {
-      flex: none;
-      box-sizing: border-box
-      display: block;
-      height: auto;
-      width: 100%;
-      padding: 20%;
-    }
   </style>
 
   <template>  
@@ -69,9 +78,9 @@
           <img class="card-project-image" src$="{{selectedProject.image}}"></img>
         </div>
         <div id="detailsRight" class="card-right flex">
-          <div id="detailsText" class="flex">
+          <div id="detailsText" class="flex layout vertical">
             <div id="detailsTitle" class="card-project-name">{{selectedProject.name}}</div>
-            <div id="detailsDescription" class="card-project-description"></div>
+            <div id="detailsDescription" class="card-project-description flex"></div>
           </div>
         </div>
       </div>

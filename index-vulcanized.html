@@ -22004,16 +22004,13 @@ footer .footer-below {
       overflow-y: hidden;
     }
 
-    .card-icon {
-    }
-
     .card-project-name {
       font-size: 2em;
     }
     
     .card-project-description {
-      -webkit-overflow-scrolling:touch;
-      overflow-y: auto;
+      height:150px;
+      overflow-y: scroll;
     }
     
     .card-project-image {
@@ -22029,14 +22026,27 @@ footer .footer-below {
       .card {
         @apply(--layout-vertical);
         @apply(--layout-center);
+        height: 500px;
       }
       
-      #detailsArt {
+      .card-left {
         border-radius: 50%;
         width: 50%;
         max-width: 100px;
         height: auto;
-        margin: 16px;      
+        margin: 50px;      
+      }
+      
+      .card-right {
+        padding: 0px 24px 24px;
+      }
+      
+      #detailsText {
+        height: 276px;
+      }
+      
+      #detailsDescription {
+        height: 233.15px;
       }
     }
   </style>

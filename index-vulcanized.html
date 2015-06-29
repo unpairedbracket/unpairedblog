@@ -21967,7 +21967,7 @@ footer .footer-below {
     },
     
     addProject: function(projectID, projectName, projectDescriptionShort, projectDescription, projectColor) {
-      this.push('items', { id: projectID, name: projectName, shortDesc: projectDescriptionShort, longDesc: projectDescription, color: 'background:#'+projectColor+';', image: "img/projects-new//"+projectID+".svg" });
+      this.push('items', { id: projectID, name: projectName, shortDesc: projectDescriptionShort, longDesc: projectDescription, color: 'background:#'+projectColor+';', image: "img/projects-new/"+projectID+".svg" });
     }
   });
 })();
@@ -21980,6 +21980,10 @@ footer .footer-below {
       height: 100%;
     }
     
+    #detailsText {
+      height: 100%;
+    }
+    
     .card {
       @apply(--layout-horizontal);
       height: 400px;
@@ -21988,6 +21992,36 @@ footer .footer-below {
       overflow: hidden;
       background: #fff;
       box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .card-left {
+      width: 400px;
+      height:400px;
+    }
+
+    .card-right {
+      padding: 24px;
+      overflow-y: hidden;
+    }
+
+    .card-icon {
+    }
+
+    .card-project-name {
+      font-size: 2em;
+    }
+    
+    .card-project-description {
+      overflow-y: auto;
+    }
+    
+    .card-project-image {
+      flex: none;
+      box-sizing: border-box
+      display: block;
+      height: auto;
+      width: 100%;
+      padding: 20%;
     }
     
     @media(max-width: 768px) {
@@ -22004,31 +22038,6 @@ footer .footer-below {
         margin: 16px;      
       }
     }
-
-    .card-left {
-      width: 400px;
-      height:400px;
-    }
-
-    .card-right {
-      padding: 24px;
-    }
-
-    .card-icon {
-    }
-
-    .card-project-name {
-      font-size: 2em;
-    }
-    
-    .card-project-image {
-      flex: none;
-      box-sizing: border-box
-      display: block;
-      height: auto;
-      width: 100%;
-      padding: 20%;
-    }
   </style>
 
   <template>  
@@ -22038,9 +22047,9 @@ footer .footer-below {
           <img class="card-project-image" src$="{{selectedProject.image}}">
         </div>
         <div id="detailsRight" class="card-right flex">
-          <div id="detailsText" class="flex">
+          <div id="detailsText" class="flex layout vertical">
             <div id="detailsTitle" class="card-project-name">{{selectedProject.name}}</div>
-            <div id="detailsDescription" class="card-project-description"></div>
+            <div id="detailsDescription" class="card-project-description flex"></div>
           </div>
         </div>
       </div>
@@ -22166,7 +22175,7 @@ footer .footer-below {
       
       ready: function() {
         this.$.list.addProject('mekanism', 'Mekanism', 'Popular Minecraft Mod', "<p>Mekanism is a large, technological mod for Minecraft. I've been actively developing Mekanism since June 2013, along with lead developer <a href='https://www.github.com/aidancbrady'>Aidan Brady</a>.</p>", '55616b')
-        this.$.list.addProject('lmh', 'LMH App', 'Utility App for College', "<p>For the past months, I've been helping Tom Johnston and Jake Stockwin with Tom's project, an app that helps to streamline interaction with our college's intranet, making common functions far more useful.</p><p>The app is still unofficial, as any official app would need to have an iOS-compatible version, and none of us have the wherewithall to develop apps within Apple's expensive developer program</p>", '3f51b3')
+        this.$.list.addProject('lmh', 'LMH App', 'Utility App for College', "<p>For the past months, I've been helping Tom Johnston and Jake Stockwin with Tom's project, an app that helps to streamline interaction with our college's intranet, making common functions far more useful.</p><p>The app is still unofficial, as any official app would need to have an iOS-compatible version, and none of us have the wherewithall to develop apps within Apple's expensive developer program.</p>", '3f51b3')
         this.$.list.addProject('oximun', 'OxIMUN Website', 'Website for the UN Society', "<p>I have helped my friend with ideas and implementation of the updated <a href='http://oximun.org'>OxIMUN 2015 website</a>.", '1a237e')
         this.$.list.addProject('shuffle', 'Shuffle', 'Upcoming Android App', "<p>Shuffle (currently in planning stages) is a music player for Android, that allows the user fine-grained control over the behaviour of its shuffling algorithms.</p>", 'f57f17')
         this.$.list.addProject('xbmcremote', 'XBMC Remote', 'Remote Control Program', "<p>XBMC Remote is a python-based app for the Ubuntu desktop. I wrote it in response to the lack of desktop-based programs to control XBMC (now Kodi) playback on a different computer, remotely.</p>", '0277bd')

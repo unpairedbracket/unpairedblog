@@ -7,14 +7,6 @@
 <dom-module id="project-list">
   <template>
     <style>
-      .chip-container {
-        position: absolute;
-        top: 275px;
-        right: 0;
-        left: 0;
-        text-align: center;
-      }
-
       .chip {
         display: inline-block;
         position: relative;
@@ -41,31 +33,35 @@
       }
       
       .chip-project-image {
-        height: 60%;
-        width: 60%;
+        box-sizing: border-box;
+        height: auto;
+        width: 100%;
         padding: 20%;
+      }
+      
+      #list-container {
+        height: 100%;
+        align-items: center;
+        align-content: center;
       }
     </style>
 
-    <section>
+    <section id="list-container" class="layout horizontal center-justified wrap">
 
-      <div class="chip-container">
+      <template is="dom-repeat" items="{{items}}">
 
-        <template is="dom-repeat" items="{{items}}">
-
-          <div class="chip" on-tap="_onTap">
-            <div class="chip-top chip-lvl-2" style$="{{item.color}}">
-              <img class="chip-project-image chip-lvl-3" src$="{{item.image}}"></img>
-            </div>
-            <div class="chip-bottom chip-lvl-2">
-              <div class="chip-project-name chip-lvl-3">{{item.name}}</div>
-              <div class="chip-short-desc chip-lvl-3">{{item.shortDesc}}</div>
-            </div>
+        <div class="chip" on-tap="_onTap">
+          <div class="chip-top chip-lvl-2" style$="{{item.color}}">
+            <img class="chip-project-image chip-lvl-3" src$="{{item.image}}"></img>
           </div>
+          <div class="chip-bottom chip-lvl-2">
+            <div class="chip-project-name chip-lvl-3">{{item.name}}</div>
+            <div class="chip-short-desc chip-lvl-3">{{item.shortDesc}}</div>
+          </div>
+        </div>
 
-        </template>
+      </template>
 
-      </div>
     </section>
   </template>
 </dom-module>

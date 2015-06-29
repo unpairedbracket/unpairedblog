@@ -4,6 +4,16 @@
 
 <dom-module id="project-section">
   <template>
+    <style>
+      :host {
+        height: 100%;
+      }
+      neon-animated-pages {
+        height: 100%;
+      }
+    </style>
+  
+    <h2>Projects</h2>
     <neon-animated-pages id="pages" selected="{{pageNumber}}">
 
       <project-list id="list" selected-project="{{selectedProject}}" on-project-click="transition"></project-list>

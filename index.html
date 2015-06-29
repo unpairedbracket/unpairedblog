@@ -24,6 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
   <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
   
+  <link rel="import" href="about-section.html">
   <link rel="import" href="projects/project-section.html">
 
   <link rel="stylesheet" href="main.css">
@@ -75,6 +76,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     paper-toolbar .title {
       line-height: 60px !important;
     }
+    
+    .main-section {
+      height: 976px
+    }
 
   </style>
 
@@ -94,18 +99,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </paper-toolbar>
 
     <div class="content">
-      <!--<section>
-        <div>
-          <img src="img/profile.png" alt="Ben Spiers">
-          <div >
-            <span >Ben Spiers</span>
-            <hr>
-            <span>Physicist - Modder - Programmer</span>
-          </div>
-        </div>
-      </section>-->
+      <section class="main-section">
+        <about-section></about-section>
+      </section>
       
-      <section>
+      <section class="main-section">
         <project-section></project-section>
       </section>
     </div>

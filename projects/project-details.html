@@ -9,6 +9,7 @@
       
       #details {
         padding: 10%;
+        height: 100%;
       }
       
       .card {
@@ -42,15 +43,16 @@
       
       .card-project-image {
         flex: none;
+        box-sizing: border-box
         display: block;
         height: auto;
-        width: 60%;
+        width: 100%;
         padding: 20%;
       }
     </style>
 
 
-    <section id="details">
+    <section id="details" class="layout vertical center-justified">
 
       <div id="detailsCard" class="card layout horizontal">
         <div id="detailsArt" class="card-left" style$="{{selectedProject.color}}">

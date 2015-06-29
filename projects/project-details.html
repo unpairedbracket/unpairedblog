@@ -1,72 +1,77 @@
 <link rel="import" href="../bower_components/neon-animation/animations/hero-animation.html">
 <link rel="import" href="../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
 <dom-module id="project-details">
-  <template>
-  
-    <style>
-      
-      #details {
-        padding: 10%;
-        height: 100%;
-      }
-      
+  <style>
+    
+    #details {
+      padding: 10%;
+      height: 100%;
+    }
+    
+    .card {
+      @apply(--layout-horizontal);
+      height: 400px;
+      border-radius: 3px;
+      text-align: start;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    @media(max-width: 768px) {
       .card {
-        height: 400px;
-        border-radius: 3px;
-        text-align: start;
-        overflow: hidden;
-        background: #fff;
-        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-
-      .card-left {
-        width: 400px;
-        height:400px;
-      }
-
-      .card-right {
-        padding: 24px;
-      }
-
-      .card-icon {
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        margin-right: 16px;
-      }
-
-      .card-project-name {
-        font-size: 2em;
+        @apply(--layout-vertical);
+        @apply(--layout-center);
       }
       
-      .card-project-image {
-        flex: none;
-        box-sizing: border-box
-        display: block;
+      #detailsArt {
+        border-radius: 50%;
+        width: 50%;
+        max-width: 100px;
         height: auto;
-        width: 100%;
-        padding: 20%;
+        margin: 16px;      
       }
-    </style>
+    }
 
+    .card-left {
+      width: 400px;
+      height:400px;
+    }
 
+    .card-right {
+      padding: 24px;
+    }
+
+    .card-icon {
+    }
+
+    .card-project-name {
+      font-size: 2em;
+    }
+    
+    .card-project-image {
+      flex: none;
+      box-sizing: border-box
+      display: block;
+      height: auto;
+      width: 100%;
+      padding: 20%;
+    }
+  </style>
+
+  <template>  
     <section id="details" class="layout vertical center-justified">
-
-      <div id="detailsCard" class="card layout horizontal">
+      <div id="detailsCard" class="card">
         <div id="detailsArt" class="card-left" style$="{{selectedProject.color}}">
           <img class="card-project-image" src$="{{selectedProject.image}}"></img>
         </div>
         <div id="detailsRight" class="card-right flex">
-          <div id="detailsTextAndIcon" class="layout horizontal center">
-            <div>
-              <div class="card-icon" style$="{{selectedProject.color}}"><img class="card-project-image" src$="{{selectedProject.image}}"></img></div>
-            </div>
-            <div id="detailsText" class="flex">
-              <div id="detailsTitle" class="card-project-name">{{selectedProject.name}}</div>
-              <div id="detailsDescription" class="card-project-description"></div>
-            </div>
+          <div id="detailsText" class="flex">
+            <div id="detailsTitle" class="card-project-name">{{selectedProject.name}}</div>
+            <div id="detailsDescription" class="card-project-description"></div>
           </div>
         </div>
       </div>

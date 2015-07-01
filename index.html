@@ -18,16 +18,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
-  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
-  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="bower_components/paper-item/paper-item.html">
+  <link rel="import" href="bower_components/paper-material/paper-material.html">
   <link rel="import" href="bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
   <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
-  
-  <link rel="import" href="about-section.html">
+
   <link rel="import" href="projects/project-section.html">
 
   <link rel="stylesheet" href="main.css">
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-64640706-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 
   <style is="custom-style">
 
@@ -49,14 +56,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: var(--paper-blue-grey-500, #607d8b);
       };
     }
+    
+    paper-scroll-header-panel::shadow #mainContainer {
+      -webkit-transform: none;
+      transform: none;
+    }
+
+    .title-container {
+      height: 100%;
+    }
+
+    .bottom.left {
+      @apply(--paper-font-title);
+      margin-left: 183px;
+    }
+    
+    paper-toolbar img {
+      box-sizing: border-box;
+      height: 300%;
+      padding: 30% 3.2px;
+      width: auto;
+    }
 
     paper-toolbar.tall {
       background-color: transparent;
     }
 
     paper-toolbar.tall .title {
+      @apply(--paper-font-display1);
+
       font-size: 40px;
-      margin-left: 60px;
+      margin-left: 20px;
 
       -webkit-transform-origin: left center;
       transform-origin: left center;
@@ -73,39 +103,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       padding: 8px;
     }
     
-    paper-toolbar .title {
-      line-height: 60px !important;
+    .main-section {
+      box-sizing: border-box;
+      height: 480px;
+      padding: 36px;
+      width: 80%;
     }
     
-    .main-section {
-      height: 976px
+    paper-material {
+      border-radius: 3px;
+      text-align: start;
+      overflow: hidden;
+      background: #fff;
+    }
+    
+    @media(max-width: 1680px) {
+      .main-section {
+        max-width: 900px;
+        height: 604px;
+      }
+    }
+
+    @media(max-width: 885px) {
+      .main-section {
+        height: 870px;
+      }
+    }
+
+    @media(max-width: 625px) {
+      .main-section {
+        height: 1668px;
+      }
+    }
+    
+    @media(max-width: 365px) {
+      .main-section {
+        width: 100%;
+        padding: 0;
+      }
     }
 
   </style>
 
 </head>
-<body>
+<body unresolved>
 
   <paper-scroll-header-panel condenses>
 
     <paper-toolbar class="tall">
-
-      <paper-icon-button icon="arrow-back"></paper-icon-button>
-      <div class="flex"></div>
-      <paper-icon-button icon="search"></paper-icon-button>
-      <paper-icon-button icon="more-vert"></paper-icon-button>
-      <div class="bottom title">Ben Spiers</div>
+      <div class="middle title-container center horizontal layout">
+        <img src="img/profile.png" alt="">
+        <div class="title">Ben Spiers</div>
+      </div>
+      <div class="bottom left">Physicist - Modder - Programmer</div> 
 
     </paper-toolbar>
 
-    <div class="content">
-      <section class="main-section">
-        <about-section></about-section>
-      </section>
-      
-      <section class="main-section">
+    <div class="content vertical center layout">      
+      <paper-material class="main-section" elevation="2">
         <project-section></project-section>
-      </section>
+      </paper-material>
     </div>
 
   </paper-scroll-header-panel>
@@ -113,15 +170,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
 
     // custom transformation: scale header's title
+    
     var title = document.querySelector('.title');
+    var image = document.querySelector('paper-toolbar img');
+    var titleContainer = document.querySelector('.title-container');
     addEventListener('paper-header-transform', function(e) {
       var d = e.detail;
       var m = d.height - d.condensedHeight;
-      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+      var y = Math.min(1, d.y / m);
+      var scale = Math.max(0.75, 1 - 0.25*(d.y /m));
+      var imgscale = Math.max(0, 1 - (d.y / m));
 
-      Polymer.Base.transform('scale(' + scale + ') translateZ(0)', title);
+      // move/translate titleContainer
+      Polymer.Base.transform('translate3d(0,' + y * 94 + '%,0)', titleContainer);
+      // scale title
+      Polymer.Base.transform('scale(' + scale + ') translateZ(0) translate3d(-' + y * 240 + 'px,0,0)', title);
+      Polymer.Base.transform('scale(' + imgscale + ') translateZ(0)', image);
     });
-
+    
   </script>
 </body>
 </html>

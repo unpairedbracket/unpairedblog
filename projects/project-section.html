@@ -12,8 +12,6 @@
         height: 100%;
       }
     </style>
-  
-    <h2>Projects</h2>
     <neon-animated-pages id="pages" selected="{{pageNumber}}">
 
       <project-list id="list" selected-project="{{selectedProject}}" on-project-click="transition"></project-list>
@@ -50,6 +48,7 @@
         this.$.list.addProject('oximun', 'OxIMUN Website', 'Website for the UN Society', "<p>I have helped my friend with ideas and implementation of the updated <a href='http://oximun.org'>OxIMUN 2015 website</a>.", '1a237e')
         this.$.list.addProject('shuffle', 'Shuffle', 'Upcoming Android App', "<p>Shuffle (currently in planning stages) is a music player for Android, that allows the user fine-grained control over the behaviour of its shuffling algorithms.</p>", 'f57f17')
         this.$.list.addProject('xbmcremote', 'XBMC Remote', 'Remote Control Program', "<p>XBMC Remote is a python-based app for the Ubuntu desktop. I wrote it in response to the lack of desktop-based programs to control XBMC (now Kodi) playback on a different computer, remotely.</p>", '0277bd')
+        this.$.list.addProject('polysite', 'This Page', 'Personal Portfolio', "<p>After briefly playing around with Bootstrap templates, I decided to go all-in and use Polymer to build a site from scratch. This is the result.</p>", 'e91e63')
       }
     });
   })();

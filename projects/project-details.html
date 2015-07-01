@@ -1,13 +1,16 @@
 <link rel="import" href="../bower_components/neon-animation/animations/hero-animation.html">
 <link rel="import" href="../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
 <dom-module id="project-details">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     
     #details {
-      padding: 10%;
       height: 100%;
     }
     
@@ -18,11 +21,11 @@
     .card {
       @apply(--layout-horizontal);
       height: 400px;
+      max-width: 1000px;
       border-radius: 3px;
       text-align: start;
       overflow: hidden;
       background: #fff;
-      box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     
     .card-left {
@@ -45,18 +48,23 @@
     
     .card-project-image {
       flex: none;
-      box-sizing: border-box
       display: block;
       height: auto;
       width: 100%;
       padding: 20%;
     }
     
-    @media(max-width: 768px) {
+    @media(max-width: 625px) {
       .card {
         @apply(--layout-vertical);
         @apply(--layout-center);
         height: 500px;
+        margin: 4px;
+        position: fixed;
+        top: 5vw;
+        left: 5vw;
+        right: 5vw;
+        height: calc(100vh - 10vw);
       }
       
       .card-left {
@@ -72,18 +80,18 @@
       }
       
       #detailsText {
-        height: 276px;
+        height: calc(100vh - 10vw - 224px);
       }
       
       #detailsDescription {
-        height: 233.15px;
+        height: calc(100vh - 10vw - 267x);        
       }
     }
   </style>
 
   <template>  
-    <section id="details" class="layout vertical center-justified">
-      <div id="detailsCard" class="card">
+    <section id="details" class="layout vertical center-center">
+      <paper-material id="detailsCard" class="card" elevation="4">
         <div id="detailsArt" class="card-left" style$="{{selectedProject.color}}">
           <img class="card-project-image" src$="{{selectedProject.image}}"></img>
         </div>
@@ -93,7 +101,7 @@
             <div id="detailsDescription" class="card-project-description flex"></div>
           </div>
         </div>
-      </div>
+      </paper-material>
 
     </section>
   </template>

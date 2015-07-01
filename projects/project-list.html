@@ -3,54 +3,57 @@
 <link rel="import" href="../bower_components/neon-animation/animations/scale-down-animation.html">
 <link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
 
 <dom-module id="project-list">
+  <style>    
+    * {
+      box-sizing: border-box;
+    }
+
+    .chip {
+      border-radius: 3px;
+      margin: 4px;
+      overflow: hidden;
+      text-align: start;
+      background-color: #fff;
+    }
+
+    .chip-top {
+      width: 200px;
+      height: 200px;
+    }
+
+    .chip-bottom {
+      padding: 8px;
+      line-height: 1.5;
+    }
+
+    .chip-project-name {
+      font-weight: bold;
+    }
+
+    .chip-project-image {
+      height: auto;
+      width: 100%;
+      padding: 20%;
+    }
+
+    #list-container {
+      height: 100%;
+      align-items: center;
+      align-content: center;
+      padding: -100px;
+    }
+  </style>
+
+
   <template>
-    <style>
-      .chip {
-        display: inline-block;
-        position: relative;
-        border-radius: 3px;
-        margin: 4px;
-        overflow: hidden;
-        text-align: start;
-        background-color: #fff;
-        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
-      }
-
-      .chip-top {
-        width: 200px;
-        height: 200px;
-      }
-
-      .chip-bottom {
-        padding: 8px;
-        line-height: 1.5;
-      }
-
-      .chip-project-name {
-        font-weight: bold;
-      }
-      
-      .chip-project-image {
-        box-sizing: border-box;
-        height: auto;
-        width: 100%;
-        padding: 20%;
-      }
-      
-      #list-container {
-        height: 100%;
-        align-items: center;
-        align-content: center;
-      }
-    </style>
-
     <section id="list-container" class="layout horizontal center-justified wrap">
 
       <template is="dom-repeat" items="{{items}}">
 
-        <div class="chip" on-tap="_onTap">
+        <paper-material class="chip" elevation="1" on-tap="_onTap">
           <div class="chip-top chip-lvl-2" style$="{{item.color}}">
             <img class="chip-project-image chip-lvl-3" src$="{{item.image}}"></img>
           </div>
@@ -58,7 +61,7 @@
             <div class="chip-project-name chip-lvl-3">{{item.name}}</div>
             <div class="chip-short-desc chip-lvl-3">{{item.shortDesc}}</div>
           </div>
-        </div>
+        </paper-material>
 
       </template>
 

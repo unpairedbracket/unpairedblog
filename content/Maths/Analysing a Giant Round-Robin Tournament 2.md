@@ -10,7 +10,7 @@ tags:
 
 Rather than trying to score everyone like I did last time, now I'm just interested in ordering them. The so-called Condorcet methods from social choice theory (voting and elections to you and me) say that one candidate beats another if they're preferred by them in a majority of voters' ballots. A lot of this terminology and theory is designed for "ranked choice" voting systems, in which each voter submits an ordered list of candidates from most to least preferred. In our case though, "preferred by a majority of voters' ballots" just means they won the poll. 
 
-A "Condorcet winner" is one who beats every other candidate in this sense. A "Condorcet cycle" occurs when you can place several candidates in a circle such that every candidate won against the person immediately clockwise of them, for example. It's impossible to pick a winner in this scenario, as every person can be considered to have "transitively beaten" (i.e. beaten someone who has beaten someone who has beaten someone who has beaten...) every other candidate (and themself!). For example, if Eddie Kingston beat Swerve Strickland and Swerve Strickland beat Orange Cassidy, but Orange beat Eddie? That's a Condorcet cycle\footnote{spoiler: this happened}. You could also consider a draw to be one, but that's less interesting. 
+A "Condorcet winner" is one who beats every other candidate in this sense. A "Condorcet cycle" occurs when you can place several candidates in a circle such that every candidate won against the person immediately clockwise of them, for example. It's impossible to pick a winner in this scenario, as every person can be considered to have "transitively beaten" (i.e. beaten someone who has beaten someone who has beaten someone who has beaten...) every other candidate (and themself!). For example, if Eddie Kingston beat Swerve Strickland and Swerve Strickland beat Orange Cassidy, but Orange beat Eddie? That's a Condorcet cycle[^happened]. You could also consider a draw to be one, but that's less interesting. 
 
 Now, we can draw out all 156 wrestlers standing in a circle and draw an arrow from each person (except Kamille) to everyone they beat (because she didn't). I'm not going to do that but imagine I did. This is a kind of graph (in the maths sense of a collection of nodes and edges, like a network) called - appropriately - a tournament. 
 
@@ -41,3 +41,5 @@ Which is to say...
 Do you love the colour of the Most Beloved AEW Wrestler Tournament?
 
 ![[schulze.svg]]
+
+[^happened]: spoiler: this happened

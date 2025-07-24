@@ -1,5 +1,11 @@
-#wrestling #voting 
-So the Most Beloved AEW Wrestler Tournament: Round-Robin Edition recently finished its giant cycle of all 156 wrestlers facing each of the other 155. I'm a bit of a nerd for this sort of thing, and it's one of the largest datasets of its kind I'm ever likely to have access to, so (and at the encouragement of @livelaughlariat) I thought I'd have a bash at some data analysis.
+---
+published: 2025-07-19
+tags:
+  - tournaments
+  - wrestling
+---
+
+Over on tumblr, the Most Beloved AEW Wrestler Tournament: Round-Robin Edition recently finished its giant cycle of all 156 wrestlers facing each of the other 155. At the encouragement of [@livelaughlariat](https://livelaughlariat.tumblr.com) I thought I'd have a bash at some data analysis.
 
 The approach I'm going to take is as follows:
 - Assume any given competitor can be described by a single "quality" (or maybe "belovedness") value $q_i$ (read as "the quality of the $i^\mathrm{th}$ competitor" - I'll label some general unspecified person with $i$, $j$ or $k$ throughout this)
@@ -37,7 +43,6 @@ Now, I can compute the value of $f_{jk} = \frac{N_j - N_k}{N_j+N_k}$ for all pai
 The most obvious output from this process is the $\{ q_i \}$ themselves. After 10k iterations of Newton's method, we have a winner. It's Willow. This shouldn't be surprising. Her overall belovedness percentage clocks in at 69% (nice)
 
 Full rankings here:
-
 ```
 69.23%: Willow Nightingale
 61.28%: Swerve Strickland
@@ -195,7 +200,8 @@ Full rankings here:
  1.62%: Chris Jericho
  1.24%: Saraya
  1.09%: Kamille
- ```
+```
+
 # Analysis: Match-by-Match Performance
 
 Now, we don't just have a set of quality factors for all of our competitors! That optimisation I did above? It's not perfect. For every given $j, k$ pairing, I've tried to get $f_{jk} - f(q_j,q_k)$ (these are called residuals) as close to zero as possible, but they can't all be zero at the same time because there are many fewer variables to tweak (the 156 $\{ q_i \}$) than residuals to minimise (of which there are over 12,000).
@@ -208,30 +214,39 @@ I've not included linear fits/correlation coefficients here like she did, for a 
  - I am a computational physicist, not a real scientist. Statistical rigour is for cowards
 
 ![[Max Caster.svg]]
+
 Max Caster shows a very pronounced growth over the course of the tournament: He starts out underperforming his expected vote shares by 0.4 (i.e. 40 percentage points!) and ends up overperforming by 20 points!
 
 ![[Mariah May.svg]]
+
 Mariah starts off vaguely growing in popularity, then starts to slide as the rumours of her leaving AEW start to gain momentum
 
 ![[Nick Comoroto.svg]]![[Serena Deeb.svg]]
+
 Not much of interest for Comoroto and Deeb
 
 ![[Kenny Omega.svg]]
+
 Kenny pretty consistent as well
 
 ![[Will Ospreay.svg]]
 ![[Toni Storm.svg]]
 ![[Ricochet.svg]]
+
 Ospreay and Toni don't move much, but Ricochet's popularity does seem to be improving a bit over the course!
 
 ![[Mark Davis.svg]]
+
 Pretty big bump for Mark Davis when he briefly started appearing more, though that eventually died down when people stopped seeing him again 
 
 ![[Kota Ibushi.svg]]
+
 And a big boost for Ibushi when he finally appeared again!
 ![[Tay Melo.svg]]
+
 Which was also replicated for Tay!
 ![[Yuka Sakazaki.svg]]
+
 A cute one to finish - maybe somewhat tenuous? - I think that bump for Yuka Sakazaki around day 110 corresponds pretty closely with her and Takeshita announcing their marriage
 
 Also, as I keep referring back to the simpler "everyone votes" model I mentioned above: The graphs that method's residuals produced look exactly the same as these ones. I literally couldn't see a difference. Surprising, but it's nice that the results are robust to differences in the model like that!

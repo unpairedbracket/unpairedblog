@@ -242,9 +242,11 @@ Pretty big bump for Mark Davis when he briefly started appearing more, though th
 ![[Kota Ibushi.svg]]
 
 And a big boost for Ibushi when he finally appeared again!
+
 ![[Tay Melo.svg]]
 
 Which was also replicated for Tay!
+
 ![[Yuka Sakazaki.svg]]
 
 A cute one to finish - maybe somewhat tenuous? - I think that bump for Yuka Sakazaki around day 110 corresponds pretty closely with her and Takeshita announcing their marriage

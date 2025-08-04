@@ -6,6 +6,12 @@ tags:
   - graph theory
 ---
 
+<style>
+  :root[saved-theme=dark] article > p > img {
+    filter: invert(100%);
+  }
+</style>
+
 [[Analysing a Giant Round-Robin Tournament|Last time]], I showed off some heavy-duty data analysis on the Most Beloved AEW Wrestler Tournament. This time I'm taking a different approach to the same thing.
 
 Rather than trying to score everyone like I did last time, now I'm just interested in ordering them. The so-called Condorcet methods from social choice theory (voting and elections to you and me) say that one candidate beats another if they're preferred by them in a majority of voters' ballots. A lot of this terminology and theory is designed for "ranked choice" voting systems, in which each voter submits an ordered list of candidates from most to least preferred. In our case though, "preferred by a majority of voters' ballots" just means they won the poll. 

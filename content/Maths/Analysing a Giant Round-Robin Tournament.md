@@ -5,6 +5,16 @@ tags:
   - wrestling
 ---
 
+<style>
+  article > p > img {
+    display: block;
+    margin: auto;
+  }
+  :root[saved-theme=dark] article > p > img {
+    filter: invert(100%);
+  }
+</style>
+
 Over on tumblr, the Most Beloved AEW Wrestler Tournament: Round-Robin Edition recently finished its giant cycle of all 156 wrestlers facing each of the other 155. At the encouragement of some friends, I thought I'd have a bash at some data analysis.
 
 The approach I'm going to take is as follows:
